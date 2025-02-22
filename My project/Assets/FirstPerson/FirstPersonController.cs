@@ -22,6 +22,7 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -50,14 +51,16 @@ public class FirstPersonController : MonoBehaviour
     void OnMove(InputValue moveVal)
     {
         movement = moveVal.Get<Vector2>();
+        print("Moving!");
     }
     void OnLook(InputValue lookVal)
     {
         mouseMovement = lookVal.Get<Vector2>();
     }
-    void OnAttack()
+    void OnFire(InputValue fireVal)
     {
         Instantiate(bullet, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+        print("Firing!");
     }
 
 
