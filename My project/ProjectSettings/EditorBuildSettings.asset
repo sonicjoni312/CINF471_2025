@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ComplexStateMachine.unity
     guid: 765bcd0bf71e731469b3b593afec4e70
+  - enabled: 1
+    path: Assets/ComplexStateMachine/PolishEndGame.unity
+    guid: 76f5edc5e50f5484ea6b21b1c9aee4cc
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
