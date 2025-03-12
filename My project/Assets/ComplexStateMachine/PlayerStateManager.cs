@@ -20,7 +20,8 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector]
     public PlayerSneakState sneakState = new PlayerSneakState();
 
-    
+    private Animator animator;
+
     public float default_speed = 5;
     public bool isSneaking = false;
     
@@ -29,7 +30,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         SwitchState(IdleState);
-
+        animator = GetComponent<Animator>();
 
 
     }
@@ -38,14 +39,22 @@ public class PlayerStateManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
+        if(isSneaking == true)
+        {
+            animator.SetBool("IsMoving", true);
+        }
+        if(isSneaking == false)
+        {
+            animator.SetBool("IsMoving", false);
+        }
     }
 
     // Input Handling Section
 
     void OnMove(InputValue moveVal)
     {
-        
-
+        //animator.SetBool("IsMoving", true);
+        //This was code I tried at first but it didn't feel as if it really used the state machine
         movement = moveVal.Get<Vector2>();
     }
 
@@ -54,6 +63,8 @@ public class PlayerStateManager : MonoBehaviour
         if(isSneaking == false)
         {
             isSneaking = true;
+            //animator.SetBool("IsMoving", false); 
+            //This was code I tried at first but it didn't feel as if it really used the state machine
         }
             else
             {
